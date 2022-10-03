@@ -354,7 +354,6 @@ static const char * const riscv_pred_succ[16] =
 enum riscv_insn_class
 {
   INSN_CLASS_NONE,
-  INSN_CLASS_SIM,
 
   INSN_CLASS_I,
   INSN_CLASS_C,
@@ -389,6 +388,8 @@ enum riscv_insn_class
   INSN_CLASS_V,
   INSN_CLASS_ZVEF,
   INSN_CLASS_SVINVAL,
+  
+  INSN_CLASS_SIM,
 };
 
 /* This structure holds information for a particular instruction.  */
