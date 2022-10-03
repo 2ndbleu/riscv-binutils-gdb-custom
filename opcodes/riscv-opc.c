@@ -268,6 +268,11 @@ match_vd_eq_vs1_eq_vs2 (const struct riscv_opcode *op,
 
 const struct riscv_opcode riscv_opcodes[] =
 {
+// {"sim_puts",    0, INSN_CLASS_SIM, "",     MATCH_SIM_PUTS, MASK_CUSTOM0, match_opcode, INSN_ALIAS },
+// {"sim_printf",  0, INSN_CLASS_SIM, "",     MATCH_SIM_PRINTF, MASK_CUSTOM0, match_opcode, INSN_ALIAS },
+// {"sim_strncpy",  0, INSN_CLASS_SIM, "",    MATCH_SIM_STRNCPY, MASK_CUSTOM1, match_opcode, INSN_ALIAS },
+// {"sim_snprintf", 0, INSN_CLASS_SIM, "",    MATCH_SIM_SNPRINTF, MASK_CUSTOM1, match_opcode, INSN_ALIAS },
+
 /* name, xlen, isa, operands, match, mask, match_func, pinfo.  */
 {"unimp",       0, INSN_CLASS_C, "",          0, 0xffffU, match_opcode, INSN_ALIAS },
 {"unimp",       0, INSN_CLASS_I, "",          MATCH_CSRRW|(CSR_CYCLE << OP_SH_CSR), 0xffffffffU,  match_opcode, 0 }, /* csrw cycle, x0  */
