@@ -2301,6 +2301,18 @@
 #define CSR_VL 0xc20
 #define CSR_VTYPE 0xc21
 #define CSR_VLENB 0xc22
+
+/* custom opcodes */
+#define MASK_CUSTOM0    0x707f
+// 0b...abc...0001011
+// a: is_format
+// b:
+// c:
+#define MATCH_PUTS      0x000b
+#define STRCPY_S
+#define MATCH_PRINTF    0x400b
+#define MATCH_SPRINTF_S
+
 #endif /* RISCV_ENCODING_H */
 #ifdef DECLARE_INSN
 DECLARE_INSN(slli_rv32, MATCH_SLLI_RV32, MASK_SLLI_RV32)
