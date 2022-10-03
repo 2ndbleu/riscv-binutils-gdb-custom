@@ -268,11 +268,6 @@ match_vd_eq_vs1_eq_vs2 (const struct riscv_opcode *op,
 
 const struct riscv_opcode riscv_opcodes[] =
 {
-// {"sim_puts",    0, INSN_CLASS_SIM, "",     MATCH_SIM_PUTS, MASK_CUSTOM0, match_opcode, INSN_ALIAS },
-// {"sim_printf",  0, INSN_CLASS_SIM, "",     MATCH_SIM_PRINTF, MASK_CUSTOM0, match_opcode, INSN_ALIAS },
-// {"sim_strncpy",  0, INSN_CLASS_SIM, "",    MATCH_SIM_STRNCPY, MASK_CUSTOM1, match_opcode, INSN_ALIAS },
-// {"sim_snprintf", 0, INSN_CLASS_SIM, "",    MATCH_SIM_SNPRINTF, MASK_CUSTOM1, match_opcode, INSN_ALIAS },
-
 /* name, xlen, isa, operands, match, mask, match_func, pinfo.  */
 {"unimp",       0, INSN_CLASS_C, "",          0, 0xffffU, match_opcode, INSN_ALIAS },
 {"unimp",       0, INSN_CLASS_I, "",          MATCH_CSRRW|(CSR_CYCLE << OP_SH_CSR), 0xffffffffU,  match_opcode, 0 }, /* csrw cycle, x0  */
@@ -1758,6 +1753,13 @@ const struct riscv_opcode riscv_opcodes[] =
 {"hsv.w",       0, INSN_CLASS_I, "t,0(s)", MATCH_HSV_W, MASK_HSV_W, match_opcode, INSN_DREF|INSN_4_BYTE },
 {"hsv.d",      64, INSN_CLASS_I, "t,0(s)", MATCH_HSV_D, MASK_HSV_D, match_opcode, INSN_DREF|INSN_8_BYTE },
 
+/* Sim custom instructions */
+	/* name, xlen, isa, operands, match, mask, match_func, pinfo.  */
+// {"sim_puts",    0, INSN_CLASS_SIM, "",     MATCH_SIM_PUTS, MASK_CUSTOM0, match_opcode, INSN_ALIAS },
+// {"sim_printf",  0, INSN_CLASS_SIM, "",     MATCH_SIM_PRINTF, MASK_CUSTOM0, match_opcode, INSN_ALIAS },
+// {"sim_strncpy",  0, INSN_CLASS_SIM, "",    MATCH_SIM_STRNCPY, MASK_CUSTOM1, match_opcode, INSN_ALIAS },
+// {"sim_snprintf", 0, INSN_CLASS_SIM, "",    MATCH_SIM_SNPRINTF, MASK_CUSTOM1, match_opcode, INSN_ALIAS },
+	
 /* Terminate the list.  */
 {0, 0, INSN_CLASS_NONE, 0, 0, 0, 0, 0}
 };
