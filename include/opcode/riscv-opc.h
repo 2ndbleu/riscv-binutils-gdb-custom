@@ -2304,17 +2304,44 @@
 
 /* custom opcodes */
 #define MASK_CUSTOM0    0x707f
+#define MASK_CUSTOM1    0x707f
+
 // 0b...abc...0001011
+// a: reserved
+// b: is_format
+// c: ...?
+
+#define MATCH_SIM_PUTS     0x000b
+// I-type (_,  &str, 000,   rd, PRINT)
+
+#define MATCH_SIM_PRINTF   0x200b
+// I-type (_, &fstr, 010,   rd, PRINT)
+
+// 0b...abc...0101011
 // a: is_format
-// b:
-// c:
-#define MATCH_PUTS      0x000b
-#define STRCPY_S
-#define MATCH_PRINTF    0x400b
-#define MATCH_SPRINTF_S
+// b: source (stdin / string)
+// c: destination (stack / string)
+
+#define MATCH_SIM_GETS_S   0x102b
+// S-type (offset, rs(n), &dst, 001, ..., C1)
+#define MATCH_SIM_STRNCPY  0x302b
+// S-type (n,  &str, &dst, 011, ..., C1)
+
+#define MATCH_SIM_SCANF_S  0x402b
+// S-type (n, &fstr, &dst, 100, ..., C1)
+#define MATCH_SIM_SSCANF_S 0x602b
+// S-type (n, &fstr, &dst, 110, ..., C1)
+#define MATCH_SIM_SNPRINTF 0x702b
+// S-type (n, &fstr, &dst, 111, ..., C1)
 
 #endif /* RISCV_ENCODING_H */
 #ifdef DECLARE_INSN
+
+DECLARE_INSN(sim_puts, MATCH_SIM_PUTS, MASK_CUSTOM0)
+DECLARE_INSN(sim_printf, MATCH_SIM_PRINTF, MASK_CUSTOM0)
+DECLARE_INSN(sim_strncpy, MATCH_SIM_STRNCPY, MASK_CUSTOM1)
+DECLARE_INSN(sim_snprintf, MATCH_SIM_SNPRINTF, MASK_CUSTOM1)
+
 DECLARE_INSN(slli_rv32, MATCH_SLLI_RV32, MASK_SLLI_RV32)
 DECLARE_INSN(srli_rv32, MATCH_SRLI_RV32, MASK_SRLI_RV32)
 DECLARE_INSN(srai_rv32, MATCH_SRAI_RV32, MASK_SRAI_RV32)
